@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>English Study Plan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+    .container:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .section h2 {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .list {
+      list-style-type: none;
+      padding: 0;
+      display: none;
+    }
+    .list li {
+      padding: 10px;
+      background-color: #ecf0f1;
+      margin: 5px 0;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .list li:nth-child(odd) {
+      background-color: #d0e4f1;
+    }
+    .list li.completed {
+      text-decoration: line-through;
+      color: #e74c3c;
+    }
+    .show {
+      display: block;
+    }
+    .save-button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .save-button:hover {
+      background-color: #2ecc71;
+    }
+    .completed-message {
+      color: #27ae60;
+      margin-top: 20px;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>English Study Plan</h1>
+
+  <!-- Memorization Plan -->
+  <div class="container">
+    <h2>Memorization Plan</h2>
+    <div class="section">
+      <h2>Week 1</h2>
+      <ul class="list">
+        <li>Day 1: Foreign Phrases, One Word Substitution (Master-1)</li>
+        <li>Day 2: One Word Substitution (Master-2), One Word Substitution (Master-3)</li>
+        <li>Day 3: One Word Substitution (Master-4), One Word Substitution (Master-5)</li>
+        <li>Day 4: Spelling (Master-1), Spelling (Master-2)</li>
+        <li>Day 5: Vocabulary (Master-1), Vocabulary (Master-2)</li>
+        <li>Day 6: Master Synonym (1-2)</li>
+        <li>Day 7: Master Antonym (1-179)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Grammar Plan -->
+  <div class="container">
+    <h2>Grammar Plan</h2>
+    <div class="section">
+      <h2>Week 1</h2>
+      <ul class="list">
+        <li>Day 1: Clause (Master Class), Right Forms of Verb (1)</li>
+        <li>Day 2: Right Forms of Verb (2-3)</li>
+        <li>Day 3: Subject-Verb Agreement (1-2)</li>
+        <li>Day 4: Voice (1-2), Latin Adjective</li>
+        <li>Day 5: Kinds of Sentence, Correction (1)</li>
+        <li>Day 6: Correction (2-3)</li>
+        <li>Day 7: Phrase, Tense, Subjunctive</li>
+      </ul>
+    </div>
+  </div>
+
+  <button class="save-button">Save Progress</button>
+  <div class="completed-message">Progress saved!</div>
+
+  <script>
+    // Toggle visibility of the lists
+    const sections = document.querySelectorAll('.section h2');
+
+    sections.forEach(section => {
+      section.addEventListener('click', () => {
+        const list = section.nextElementSibling;
+        list.classList.toggle('show');
+      });
+    });
+
+    // Add strikethrough effect for completed items
+    const items = document.querySelectorAll('.list li');
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('completed');
+      });
+    });
+
+    // Save button functionality
+    const saveButton = document.querySelector('.save-button');
+    const completedMessage = document.querySelector('.completed-message');
+
+    saveButton.addEventListener('click', () => {
+      const completedItems = [];
+      items.forEach(item => {
+        if (item.classList.contains('completed')) {
+          completedItems.push(item.innerText);
+        }
+      });
+
+      // You can now store the completedItems array somewhere, like localStorage or send it to a server.
+      console.log('Completed items:', completedItems);
+
+      // Show the saved message
+      completedMessage.style.display = 'block';
+      setTimeout(() => {
+        completedMessage.style.display = 'none';
+      }, 2000); // Hide the message after 2 seconds
+    });
+  </script>
+  
+</body>
+</html>
