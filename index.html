@@ -62,25 +62,19 @@
     .show {
       display: block;
     }
-    .save-button {
+    .print-button {
       display: inline-block;
       padding: 10px 20px;
       margin-top: 20px;
-      background-color: #27ae60;
+      background-color: #3498db;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-size: 16px;
     }
-    .save-button:hover {
-      background-color: #2ecc71;
-    }
-    .completed-message {
-      color: #27ae60;
-      margin-top: 20px;
-      text-align: center;
-      display: none;
+    .print-button:hover {
+      background-color: #2980b9;
     }
   </style>
 </head>
@@ -121,10 +115,10 @@
       </ul>
     </div>
   </div>
-<p align="center">
-  <button  class="save-button"><b><p align="center">Save Progress</p></b></button>
-  <div class="completed-message">Progress saved!</div>
-</p>
+
+  <p align="center">
+    <button class="print-button"><b>Print Plan</b></button>
+  </p>
 
   <script>
     // Toggle visibility of the lists
@@ -146,28 +140,13 @@
       });
     });
 
-    // Save button functionality
-    const saveButton = document.querySelector('.save-button');
-    const completedMessage = document.querySelector('.completed-message');
+    // Print button functionality
+    const printButton = document.querySelector('.print-button');
 
-    saveButton.addEventListener('click', () => {
-      const completedItems = [];
-      items.forEach(item => {
-        if (item.classList.contains('completed')) {
-          completedItems.push(item.innerText);
-        }
-      });
-
-      // You can now store the completedItems array somewhere, like localStorage or send it to a server.
-      console.log('Completed items:', completedItems);
-
-      // Show the saved message
-      completedMessage.style.display = 'block';
-      setTimeout(() => {
-        completedMessage.style.display = 'none';
-      }, 2000); // Hide the message after 2 seconds
+    printButton.addEventListener('click', () => {
+      window.print();
     });
   </script>
-  
+
 </body>
 </html>
